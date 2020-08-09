@@ -1,0 +1,20 @@
+div.petBadge{
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10px;
+    width: 50%;
+    height: 100px;
+    background-color: #F4F4F4;
+    border: 1px solid #A1A1A1;
+    border-radius: 5px;
+    h1{
+        float: left;
+        padding: 5px;
+    }
+    span{
+        justify-content: space-evenly;
+        float: left;
+        margin-right: 40px;
+    }
+}
