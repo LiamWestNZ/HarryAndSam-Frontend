@@ -24,10 +24,12 @@ text-decoration-color: #FFFF ;
 
 
 export function PetList(props){
+    const {handleBadgeClick, handleGetPetID} = props
     const username = localStorage.getItem('userName')
     const [pets, setPets] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState('')
+    const [recievedId, setRecievedId] = useState(0)
 
     const getPets = async () => {
       const url = `http://localhost:8000/api/pets/${username}`
@@ -55,17 +57,19 @@ export function PetList(props){
         </TitleDiv>
           
           { error && error }
-        { isLoading ? <div>Loading...</div> : <DisplayPets pets={pets} /> }
+    { isLoading ? <div>Loading...</div> : <DisplayPets pets={pets} handleBadgeClick={handleBadgeClick} handleGetPetID={handleGetPetID} /> }
         </div>
         
     )
 }
 
+// 
 
-
-export function DisplayPets({ pets }) {
-  const displayPets = pets.map(pet => (
-    <PetBadge key={pet.id} {...pet} />
+export function DisplayPets(props) {
+  const {handleBadgeClick, handleGetPetID} = props
+  console.log("props:", props)
+  const displayPets = props.pets.map(pet =>(
+    <PetBadge key={pet.id} {...pet} handleBadgeClick={handleBadgeClick} handleGetPetID={handleGetPetID} />
   ))
   return (
     <div>

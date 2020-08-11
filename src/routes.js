@@ -15,14 +15,13 @@ import ProfileEdit from './pages/ProfileEdit'
 
 
 
-
 export function Routes() {
   return (
     <Switch>
       <PrivateRoute exact path="/" component={Dashboard}/>
       <PrivateRoute exact path="/booking" component={Booking} />
       <PrivateRoute exact path="/pets" component={Pets} />
-      <PrivateRoute exact path="/pets/detail" component={PetProfile} />
+      
       <PrivateRoute exact path="/profile" component={Profile} />
       <PrivateRoute exact path="/profile/edit" component={ProfileEdit} />
 

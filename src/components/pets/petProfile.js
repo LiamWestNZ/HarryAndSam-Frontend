@@ -24,13 +24,14 @@ text-decoration-color: #FFFF ;
 
 
 export function PetProfile(props){
+    const {id} = props
     const [isLoading, setIsLoading] = useState(false)
     const [petProfile, setPetProfile] = useState([])
     const [error, setError] = useState('')
 
     
     const getPetProfile = async () => {
-        const url = `http://localhost:8000/api/pets/1`
+        const url = `http://localhost:8000/api/pets/${id}`
         setError('')
         setIsLoading(true)
         try {
@@ -53,8 +54,9 @@ export function PetProfile(props){
             <div id="content" className="content"></div>
                 <div id="profilePicture" className="profilePicture"><img src={Picture} height="290px" width="290px"/></div>
                 <div id="petInfo" className="petInfo"><DisplayPetInfo profile={petProfile} /></div>
-                <div id="serviceFlags" className="scroll"><DisplayServiceInfo profile={petProfile} /><h2>Service Information</h2></div>
-                <div id="serviceFlags" className="scroll"><DisplayHealthInfo profile={petProfile} /></div>
+                <div id="serviceFlags" className="scroll"><DisplayServiceInfo profile={petProfile} /><h2>Service Flags</h2></div>
+                <div id="serviceFlags" className="scroll"><DisplayHealthInfo profile={petProfile} /><h2>Health Flags</h2></div>
+                <div id="notes" className="notes"><DisplayNotes profile={petProfile} /></div>
         </div>
 
     )
@@ -92,7 +94,7 @@ export function DisplayServiceInfo(props){
     console.log(props)
     return (
         <div>
-            <h3>{props.profile.vaccine}</h3>
+            <h3>{"Vaccine Info:", props.profile.vaccine}</h3>
             <h3>{handleServiceIfTrue("Anxiety", props.profile.anxiety)}</h3>
             <h3>{handleServiceIfTrue("No Perfumes", props.profile.prefumes)}</h3>
             <h3>{handleServiceIfTrue("Cage Aggressive", props.profile.cage)}</h3>
@@ -143,6 +145,16 @@ export function DisplayHealthInfo(props){
             <h3>{handleServiceIfTrue("Has Tooth Decay", props.profile.tooth)}</h3>
             <h3>{handleServiceIfTrue("Has Tumors/Cysts", props.profile.tumors)}</h3>
             <h3>{handleServiceIfTrue("Has Arthritis", props.profile.athritis)}</h3>
+        </div>
+    )
+}
+
+export function DisplayNotes(props){
+
+    return (
+        <div>
+            <h3>{"Service Notes:", props.profile.notes}</h3>
+            <h3>{"Allergie Notes:", props.profile.allergies_notes}</h3>
         </div>
     )
 }
