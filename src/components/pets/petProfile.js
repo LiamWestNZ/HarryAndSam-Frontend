@@ -49,7 +49,7 @@ export function PetProfile(props){
         getPetProfile()
       },[])
     return (
-        <div className="Badge">
+        <div className="pets">
              <TitleDiv > <Title ><i className="ion-ios-paw"></i> {petProfile.name}'s Profile </Title> </TitleDiv >
             <div id="content" className="content"></div>
                 <div id="profilePicture" className="profilePicture"><img src={Picture} height="290px" width="290px"/></div>

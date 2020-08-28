@@ -1,0 +1,21 @@
+div.contentDiv{
+    width: 80%;
+    min-height: 80%;
+    height: auto;
+    left: 10%;
+    top: 100px;
+    z-index: 1;
+    position: absolute;
+    background-color: #FFFF;
+    font-weight: bold;
+    border: 1px solid #A1A1A1;
+
+
+}
+
+@media screen and (max-width: 759px) {
+    div.contentDiv{
+        top: 10px;
+        left: 75px;
+    }
+}

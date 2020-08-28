@@ -5,6 +5,7 @@ nav.responsive-toolbar {
     position: fixed;
     box-shadow: 2px 2px 2px #ccc;
     z-index: 4;
+    text-decoration: bold;
 
     ul {
         background: #8FC2E9;
@@ -38,6 +39,7 @@ nav.responsive-toolbar {
             display: flex;
             flex-direction: row-reverse;
             align-items: center;
+            font-weight: 600;
             
         }
         
@@ -81,7 +83,7 @@ nav.responsive-toolbar {
             }
 
             li:nth-child(3) {
-                float: left;
+                float: right;
                 
             }
 
