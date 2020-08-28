@@ -1,5 +1,28 @@
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+    // For Google Chrome
+    &::-webkit-scrollbar {
+      width:  $size;
+      height: $size;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background: $foreground-color;
+    }
+  
+    &::-webkit-scrollbar-track {
+      background: $background-color;
+    }
+  
+    // For Internet Explorer
+    & {
+      scrollbar-face-color: $foreground-color;
+      scrollbar-track-color: $background-color;
+    }
+  }
+
 div.container{
     background-color: #F4F4F4;
+    overflow: auto;
     height: 100vh;
     padding-top: 0px;
     position: relative;
@@ -10,6 +33,8 @@ div.container{
     z-index: 2;
     border: 2px solid #E6E6E6;
     border-radius: 5px;
+    padding-bottom: 400px;
+    @include scrollbars(10px, #8FC2E9, #F4F4F4);
 }
 
 div.picBorder{

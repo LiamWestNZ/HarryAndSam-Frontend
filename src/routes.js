@@ -12,6 +12,7 @@ import Register from './components/accounts/register'
 import Login from './components/accounts/login'
 import Logout from './components/accounts/logout'
 import ProfileEdit from './pages/ProfileEdit'
+import petCreate from './pages/petCreate'
 
 
 
@@ -21,6 +22,7 @@ export function Routes() {
       <PrivateRoute exact path="/" component={Dashboard}/>
       <PrivateRoute exact path="/booking" component={Booking} />
       <PrivateRoute exact path="/pets" component={Pets} />
+      <PrivateRoute exact path="/pets/create" component={petCreate} />
       
       <PrivateRoute exact path="/profile" component={Profile} />
       <PrivateRoute exact path="/profile/edit" component={ProfileEdit} />

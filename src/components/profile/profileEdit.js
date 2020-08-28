@@ -3,9 +3,9 @@ import React, { useState, useEffect } from "react";
 import 'antd/dist/antd.css';
 import { NavLink } from 'react-router-dom';
 import history from '../../history'
-import './badge.scss'
+import './profile.scss'
 import {apiProfileUpdate} from '../profile/lookup'
-import styled from 'styled-components';
+
 import {
     Form,
     Input,
@@ -14,23 +14,7 @@ import {
     Button,
     AutoComplete,
   } from 'antd';  
-
-const Title = styled.h1`
-  font-size: 1.7em;
-  text-align: center;
-  color: white;
-  float: left;
-  padding-left: 5px
-
-`;
-
-const TitleDiv = styled.div`
-  position: relative;
-  background: #8FC2E9;
-  height:40px;
-  width: 100%;
-  text-decoration-color: #FFFF ;
-`;
+import ContentDiv from "../layout/title";
 
 
 
@@ -145,8 +129,8 @@ export const ProfileUpdateForm = (props) => {
   );
 
   return (
-    <div className="Badge">
-      <TitleDiv > <Title ><i className="ion-ios-person"></i> Edit Your Profile </Title> </TitleDiv >
+    <div className="contentDiv">
+      <ContentDiv icon={<i className="ion-ios-person"></i>} title="Edit Profile" />
         <Form
         {...formItemLayout}
         form={form}

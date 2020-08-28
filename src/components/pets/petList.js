@@ -1,26 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import PetBadge from './components'
 
-import styled from 'styled-components';
 
-import './badge.scss'
+import './pets.scss'
+import ContentDiv from '../layout/title';
 
-const Title = styled.h1`
-  font-size: 1.7em;
-  text-align: center;
-  color: white;
-  float: left;
-  padding-left: 5px
-
-`;
-
-const TitleDiv = styled.div`
-position: relative;
-background: #8FC2E9;
-height:40px;
-width: 100%;
-text-decoration-color: #FFFF ;
-`;
 
 
 export function PetList(props){
@@ -51,10 +35,8 @@ export function PetList(props){
 
     return (
       
-        <div className="Badge">
-        <TitleDiv>
-          <Title><i className="ion-ios-paw"></i> Your Pets</Title>
-        </TitleDiv>
+        <div className="contentDiv">
+        <ContentDiv icon={<i className="ion-ios-paw"></i>} title="Your Pets" />
           
           { error && error }
     { isLoading ? <div>Loading...</div> : <DisplayPets pets={pets} handleBadgeClick={handleBadgeClick} handleGetPetID={handleGetPetID} /> }
