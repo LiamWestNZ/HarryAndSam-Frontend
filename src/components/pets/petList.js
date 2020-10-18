@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react'
-import PetBadge from './components'
+import PetBadge from './components';
+import { Route, Switch, Link } from 'react-router-dom';
+import history from '../../history'
 
 
 import './pets.scss'
@@ -7,13 +9,13 @@ import ContentDiv from '../layout/title';
 
 
 
-export function PetList(props){
-    const {handleBadgeClick, handleGetPetID} = props
+
+export function PetList(){
     const username = localStorage.getItem('userName')
     const [pets, setPets] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState('')
-    const [recievedId, setRecievedId] = useState(0)
+    
 
     const getPets = async () => {
       const url = `http://localhost:8000/api/pets/${username}`
@@ -35,27 +37,27 @@ export function PetList(props){
 
     return (
       
-        <div className="contentDiv">
-        <ContentDiv icon={<i className="ion-ios-paw"></i>} title="Your Pets" />
+
+        <>
           
           { error && error }
-    { isLoading ? <div>Loading...</div> : <DisplayPets pets={pets} handleBadgeClick={handleBadgeClick} handleGetPetID={handleGetPetID} /> }
-        </div>
+    { isLoading ? <div>Loading...</div> : <DisplayPets pets={pets} /> }
+      </>  
         
     )
 }
 
-// 
 
 export function DisplayPets(props) {
-  const {handleBadgeClick, handleGetPetID} = props
-  console.log("props:", props)
+  
+  
   const displayPets = props.pets.map(pet =>(
-    <PetBadge key={pet.id} {...pet} handleBadgeClick={handleBadgeClick} handleGetPetID={handleGetPetID} />
+    <PetBadge key={pet.id} {...pet}/>
   ))
   return (
     <div>
       {displayPets}
+      <Link to="/pets/create"><button className="addButton">+ Pet</button></Link>
     </div>
   )
 }

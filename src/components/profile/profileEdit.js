@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import 'antd/dist/antd.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import history from '../../history'
 import './profile.scss'
 import {apiProfileUpdate} from '../profile/lookup'
@@ -54,7 +54,7 @@ const tailFormItemLayout = {
   }};
 
   
-export const ProfileUpdateForm = (props) => {
+export function ProfileUpdateForm (props){
   console.log(props)
   const username = localStorage.getItem('userName')
   const [form] = Form.useForm();
@@ -87,6 +87,9 @@ export const ProfileUpdateForm = (props) => {
                 address2: data.address2,
                 city: data.city,
                 postal: data.postal
+            })
+            .catch((error)=>{
+              console.log(errorMessage, error)
             })
 
 
@@ -129,8 +132,6 @@ export const ProfileUpdateForm = (props) => {
   );
 
   return (
-    <div className="contentDiv">
-      <ContentDiv icon={<i className="ion-ios-person"></i>} title="Edit Profile" />
         <Form
         {...formItemLayout}
         form={form}
@@ -285,14 +286,14 @@ export const ProfileUpdateForm = (props) => {
             <Button type="primary" htmlType="submit" >
             Update
             </Button>
-            <Button onClick={(event)=>props.onCancel()} type="button">
+            <Link to="/profile"><Button type="button">
             Cancel
-            </Button>
+            </Button></Link>
             
             <br></br>
         </Form.Item>
         </Form>
-        </div>
+
   );
 }
 

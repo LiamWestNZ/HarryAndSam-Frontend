@@ -7,16 +7,8 @@ import './profile.scss'
 
 
 export function Profile () {
-        return (
-        <div>
-                <Toolbar />
-                        <div id="container" className="container">
-                        
-                        <ProfileMain />
-
-                        </div>
-                
-        </div>
+        return (     
+        <ProfileMain />
         )
         }
 export default Profile;

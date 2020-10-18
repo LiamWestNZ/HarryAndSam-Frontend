@@ -13,14 +13,11 @@ import {
 } from 'antd';
 import axios from 'axios';
 
+import ContentDiv from '../layout/title';
+
 
 
 import './pets.scss'
-
-
-
-
-
 
 
 const health_flags = [
@@ -50,7 +47,10 @@ const service_flags = [
 
 
 
-export function PetCreateForm(){
+export function PetUpdateForm(props){
+    const {id} = props.match.params
+    const username = localStorage.getItem('userName')
+    
 
 
 
@@ -58,7 +58,7 @@ export function PetCreateForm(){
 
         const formValues = {name: values.name, pet_type: values.pet_type,breed: values.breed,gender: values.gender,son: values.son,
             weight: values.weight,coat: values.coat,birthday: values.birthday,allergies: values.allergies,anal_gland: values.anal_gland,
-            arthirits: values.arthritis,blind: values.blind,trachea: values.trachea,deaf: values.deaf,diabetic: values.diabetic,
+            arthritis: values.arthritis,blind: values.blind,trachea: values.trachea,deaf: values.deaf,diabetic: values.diabetic,
             standing: values.standing,epileptic: values.epileptic,heart: values.heart,hot: values.hot,hip: values.hip,
             incontinince: values.incontinince,kidney: values.kidney,moles: values.moles,pancreatitis: values.pancreatitis,ear: values.ear, 
             skin: values.skin, tooth: values.tooth,tumors: values.tumors,anxiety: values.anxiety, perfumes: values.perfumes, cage: values.cage,
@@ -67,24 +67,44 @@ export function PetCreateForm(){
             hernia: values.hernia,table: values.table, team: values.team, biting: values.biting,chew: values.chew, leash: values.leash, 
             soiler: values.soiler,barker: values.barker}
 
-        console.log(values)
-        const username = localStorage.getItem('userName')
-        return axios.post(`http://localhost:8000/api/pets/${username}/create`, formValues)
+        
+        return axios.put(`http://localhost:8000/api/pets/${id}/edit`, formValues)
             .then((response) => {
                  console.log("QUOTE:",response, "Response Message:", response.request.response)
                    }) .catch((error)=> {
                         console.log(error);
                   });
+    }
+        
+    useEffect(()=>{
+        fetch(`http://localhost:8000/api/pets/${id}`)
+        .then(results=>{
+            return results.json()
+        }).then(values=>{
+            console.log(values)
+            form.setFieldsValue({name: values.name, pet_type: values.pet_type,breed: values.breed,gender: values.gender,son: values.son,
+                weight: values.weight,coat: values.coat,allergies: values.allergies,anal_gland: values.anal_gland,
+                arthirits: values.arthritis,blind: values.blind,trachea: values.trachea,deaf: values.deaf,diabetic: values.diabetic,
+                standing: values.standing,epileptic: values.epileptic,heart: values.heart,hot: values.hot,hip: values.hip,
+                incontinince: values.incontinince,kidney: values.kidney,moles: values.moles,pancreatitis: values.pancreatitis,ear: values.ear, 
+                skin: values.skin, tooth: values.tooth,tumors: values.tumors,anxiety: values.anxiety, perfumes: values.perfumes, cage: values.cage,
+                photo: values.photo, clippers: values.clippers, animals: values.animals,people: values.people, dryer: values.dryer, nail: values.nail,
+                water: values.water, clipper_burn: values.clipper_burn, shedding: values.shedding,senior: values.senior, energy: values.energy, 
+                hernia: values.hernia,table: values.table, team: values.team, biting: values.biting,chew: values.chew, leash: values.leash, 
+                soiler: values.soiler,barker: values.barker})
+        }).catch((error)=>{
+            console.log(error)
+        })
             
-            
-}
+        })
+
     
     const [form] = Form.useForm();
 
     return (
             <Form
             form={form}
-            name="petcreate"
+            name="petupdate"
             onFinish={onFinish}
             scrollToFirstError
             >
@@ -141,7 +161,7 @@ export function PetCreateForm(){
                 <DatePicker />
             </Form.Item>
 
-            <Form.Item name="son" label="Sprayed / Neutered" valuePropName="true" style={{ float: 'left', marginTop: 0, marginLeft: 10}}>
+            <Form.Item name="son" label="Sprayed / Neutered" valuePropName="checked" style={{ float: 'left', marginTop: 0, marginLeft: 10}}>
             <Switch />
             </Form.Item>
 
@@ -160,20 +180,20 @@ export function PetCreateForm(){
             </Form.Item>
                 <div>
                 {health_flags.map((flag, index)=>
-                    <Form.Item key={index} name={flag.name} label={flag.verbose} style={{textAlign: 'left', marginLeft: 10}}>
+                    <Form.Item key={index} name={flag.name} label={flag.verbose} valuePropName="checked" style={{textAlign: 'left', marginLeft: 10}}>
                         <Switch />
                     </Form.Item>)}
                 </div>
 
                 
                 {service_flags.map((flag, index)=>
-                    <Form.Item key={index} name={flag.name} label={flag.verbose} style={{textAlign: 'left', marginTop: 0, marginLeft: 10}}>
+                    <Form.Item key={index} name={flag.name} label={flag.verbose} valuePropName="checked" style={{textAlign: 'left', marginTop: 0, marginLeft: 10}}>
                         <Switch />
                     </Form.Item>)}
                 
                     <Form.Item>
                         <Button type="primary" htmlType="submit">
-                        Register Pet
+                        Update Pet
                         </Button>
                     </Form.Item>
             
@@ -184,4 +204,4 @@ export function PetCreateForm(){
 
 
 
-export default PetCreateForm;
+export default PetUpdateForm;

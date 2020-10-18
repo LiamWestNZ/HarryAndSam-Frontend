@@ -27,7 +27,7 @@ export function Toolbar(props){
         {
             text: 'Pets',
             path: '/pets', 
-            icon: 'ion-ios-paw'
+            icon: 'ion-ios-paw',
           },
           {
             text: 'Profile',
@@ -35,7 +35,7 @@ export function Toolbar(props){
             icon: 'ion-ios-person'
           }]
 
-    const {background, hoverBackground, linkColor} = props
+    const {background, hoverBackground, linkColor, handleListCB} = props
     const [ hoverIndex, setHoverIndex ] = useState(-1)
     const [navOpen, setNavOpen ] = useState(false)
     return (
@@ -48,9 +48,8 @@ export function Toolbar(props){
             <figure onClick={ () => setNavOpen(!navOpen) }>
                 <img src={logo} height="40px" width="40px" alt="logo-nav-toggler"/>
             </figure>
-             {navLinks.map((link, index) =>
+             {navLinks.map((link, index) => 
             
-
              <li
                 key={ index }
                 onMouseEnter={ () => setHoverIndex(index)}
@@ -64,7 +63,10 @@ export function Toolbar(props){
                  <i className={link.icon} />
                  </Link>
                  
-             </li>)}
+             </li>
+                    
+                )
+             }
              <li
                 onMouseEnter={ () => setHoverIndex(props.index)}
                 onMouseLeave={ () => setHoverIndex(-1)}
