@@ -8,15 +8,7 @@ import './profile.scss'
 
 export function ProfileEdit () {
         return (
-        <div>
-                <Toolbar />
-                        <div id="container" className="container">
-                        
                         <ProfileUpdateForm />
-
-                        </div>
-                
-        </div>
         )
         }
 export default ProfileEdit;

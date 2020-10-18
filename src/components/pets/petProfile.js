@@ -1,30 +1,13 @@
 import React, {useEffect, useState} from 'react'
+import {Link} from 'react-router-dom'
 
 import {Picture} from '../../assets/dog.jpg'
 
-import styled from 'styled-components';
-
-const Title = styled.h1`
-  font-size: 1.7em;
-  text-align: center;
-  color: white;
-  float: left;
-  padding-left: 5px
-
-`;
-
-const TitleDiv = styled.div`
-position: relative;
-background: #8FC2E9;
-height: 40px;
-width: 100%;
-text-decoration-color: #FFFF ;
-`;
 
 
 
 export function PetProfile(props){
-    const {id} = props
+    const {id} = props.match.params
     const [isLoading, setIsLoading] = useState(false)
     const [petProfile, setPetProfile] = useState([])
     const [error, setError] = useState('')
@@ -49,15 +32,14 @@ export function PetProfile(props){
         getPetProfile()
       },[])
     return (
-        <div className="pets">
-             <TitleDiv > <Title ><i className="ion-ios-paw"></i> {petProfile.name}'s Profile </Title> </TitleDiv >
-            <div id="content" className="content"></div>
+        <>
                 <div id="profilePicture" className="profilePicture"><img src={Picture} height="290px" width="290px"/></div>
                 <div id="petInfo" className="petInfo"><DisplayPetInfo profile={petProfile} /></div>
                 <div id="serviceFlags" className="scroll"><DisplayServiceInfo profile={petProfile} /><h2>Service Flags</h2></div>
                 <div id="serviceFlags" className="scroll"><DisplayHealthInfo profile={petProfile} /><h2>Health Flags</h2></div>
                 <div id="notes" className="notes"><DisplayNotes profile={petProfile} /></div>
-        </div>
+                <button onClick={()=><Link to={`/pets/profile/${id}/edit`} />}>Edit Profile</button>
+        </>
 
     )
 }

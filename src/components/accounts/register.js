@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as actions from '../../store/actions/auth';
 import 'antd/dist/antd.css';
 import styled from 'styled-components';

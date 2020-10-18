@@ -1,3 +1,4 @@
+
 div.petBadge{
     position: relative;
     margin-right: auto;
@@ -5,10 +6,9 @@ div.petBadge{
     margin-top: 10px;
     width: 50%;
     height: 100px;
-    background-color: #F4F4F4;
-    border: 1px solid #A1A1A1;
+    background-color: #F7F9FC;
     border-radius: 5px;
-    box-shadow: 2px 2px 2px #ccc;
+    box-shadow: 0.5px 0.5px 0px 2px #ccc ;
     h1{
         float: left;
         padding: 5px;
@@ -17,5 +17,16 @@ div.petBadge{
         justify-content: space-evenly;
         float: left;
         margin-right: 40px;
+    }
+    i{
+        font-size: 50px;
+        float: right;
+        padding-right: 10px;
+        color: #8FC2E9;
+        text-shadow: 2px 1px 1px #666;
+
+        &:hover{
+            color: #5F819B;
+        }
     }
 }

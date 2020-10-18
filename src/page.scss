@@ -1,0 +1,25 @@
+div.container {
+    background-color: red;
+    overflow: auto;
+    height: 100vh;
+    padding-top: 0px;
+    position: relative;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    z-index: 2;
+    border: 2px solid #E6E6E6;
+    border-radius: 5px;
+    padding-bottom: 400px; }
+    div.container::-webkit-scrollbar {
+      width: 10px;
+      height: 10px; }
+    div.container::-webkit-scrollbar-thumb {
+      background: #8FC2E9; }
+    div.container::-webkit-scrollbar-track {
+      background: #F4F4F4; }
+    div.container {
+      scrollbar-face-color: #8FC2E9;
+      scrollbar-track-color: #F4F4F4;
+ }

@@ -8,7 +8,73 @@ div.contentDiv{
     position: absolute;
     background-color: #FFFF;
     font-weight: bold;
-    border: 1px solid #A1A1A1;
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px 2px #ccc;
+
+    button.addButton {
+        transition-duration: 0.4s;
+        height: 50px;
+        width: 120px;
+        display: inline-block;
+        padding: 15px 25px;
+        font-size: 24px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #8FC2E9;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 9px #999;
+        padding-left: 30px;
+        }
+
+        button.addButton:hover {
+            background-color: #5F819B;
+            
+            border: 2px solid #8FC2E9;
+            color: white;
+        }
+
+        button.addButton:active {
+            background-color: #5F819B;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+          }
+
+
+    button.removeButton {
+            transition-duration: 0.4s;
+            height: 50px;
+            width: 120px;
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 24px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: red;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+            padding-right: 30px;
+        }
+
+    button.removeButton:hover {
+        background-color: #800000;
+        
+        border: 2px solid red;
+        color: white;
+    }
+
+    button.removeButton:active {
+        background-color: #800000;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+      }
 
 
 }
@@ -19,3 +85,29 @@ div.contentDiv{
         left: 75px;
     }
 }
+
+div.container {
+    background-color: #F7F9FC;
+    overflow: auto;
+    height: 100vh;
+    padding-top: 0px;
+    position: relative;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    z-index: 2;
+    border: 2px solid #E6E6E6;
+    border-radius: 5px;
+    padding-bottom: 400px; }
+    div.container::-webkit-scrollbar {
+      width: 10px;
+      height: 10px; }
+    div.container::-webkit-scrollbar-thumb {
+      background: #8FC2E9; }
+    div.container::-webkit-scrollbar-track {
+      background: #F4F4F4; }
+    div.container {
+      scrollbar-face-color: #8FC2E9;
+      scrollbar-track-color: #F4F4F4;
+ }

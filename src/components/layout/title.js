@@ -19,6 +19,7 @@ const TitleDiv = styled.div`
     height:40px;
     width: 100%;
     text-decoration-color: #FFFF ;
+    border-radius: 5px;
 `;
 
 

@@ -4,19 +4,14 @@ import React from 'react'
 import {Toolbar} from '../components/toolbar/Toolbar';
 import PetCreateForm from '../components/pets/petCreate'
 
-import './profile.scss'
 
 
-export function Pets () {
+
+export function PetCreate () {
         return (
-            <div>
-                <Toolbar />
-                    <div id="container" className="container">
-                        <PetCreateForm />
-                    </div>
-            </div>
+            <PetCreateForm />
         )
     }
 
 
-export default Pets;
+export default PetCreate;
