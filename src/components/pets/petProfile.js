@@ -2,15 +2,24 @@ import React, {useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
 
 import {Picture} from '../../assets/dog.jpg'
+import ContentDiv from '../layout/title'
+import {Tabs, Tab, Content} from '../layout/tab'
 
 
 
 
 export function PetProfile(props){
     const {id} = props.match.params
-    const [isLoading, setIsLoading] = useState(false)
-    const [petProfile, setPetProfile] = useState([])
-    const [error, setError] = useState('')
+    const [active, setActive] = useState(0);
+    const [isLoading, setIsLoading] = useState(false);
+    const [petProfile, setPetProfile] = useState([]);
+    const [error, setError] = useState('');
+    const handleOnClick = e => {
+        const index = parseInt(e.target.id, 0)
+        if(index !== active) {
+            setActive(index);
+        }
+    };
 
     
     const getPetProfile = async () => {
@@ -32,14 +41,42 @@ export function PetProfile(props){
         getPetProfile()
       },[])
     return (
-        <>
-                <div id="profilePicture" className="profilePicture"><img src={Picture} height="290px" width="290px"/></div>
-                <div id="petInfo" className="petInfo"><DisplayPetInfo profile={petProfile} /></div>
-                <div id="serviceFlags" className="scroll"><DisplayServiceInfo profile={petProfile} /><h2>Service Flags</h2></div>
-                <div id="serviceFlags" className="scroll"><DisplayHealthInfo profile={petProfile} /><h2>Health Flags</h2></div>
-                <div id="notes" className="notes"><DisplayNotes profile={petProfile} /></div>
-                <button onClick={()=><Link to={`/pets/profile/${id}/edit`} />}>Edit Profile</button>
-        </>
+        <div>
+        
+        
+            <ContentDiv
+            icon="ion-ios-paw" title={`${petProfile.name}'s Profile`}>
+                <Tabs>
+                    <Tab onClick={handleOnClick} active={active === 0} id={0}>
+                        Main
+                    </Tab>
+
+                    <Tab onClick={handleOnClick} active={active === 1} id={1}>
+                        Health
+                    </Tab>
+                    <Tab onClick={handleOnClick} active={active === 2} id={2}>
+                        Notes
+                    </Tab>
+                    
+                </Tabs>
+                
+            </ContentDiv>
+        
+            <>
+                <Content active={active == 0}>
+                    <button onClick={()=><Link to={`/pets/profile/${id}/edit`} />}>Edit Profile</button>
+                    <div id="profilePicture" className="profilePicture"><img src={Picture} height="290px" width="290px"/></div>
+                    <div id="petInfo" className="petInfo"><DisplayPetInfo profile={petProfile} /></div>
+                </Content>
+                <Content active={active == 1}>
+                    <div id="serviceFlags" className="serviceFlags"><DisplayServiceInfo profile={petProfile} /><h2>Service Flags</h2></div>
+                    <div id="healthFlags" className="healthFlags"><DisplayHealthInfo profile={petProfile} /><h2>Health Flags</h2></div>
+                </Content>
+                <Content active={active == 2}>
+                    <div id="notes" className="notes"><DisplayNotes profile={petProfile} /></div>
+                </Content>
+            </>
+        </div> 
 
     )
 }

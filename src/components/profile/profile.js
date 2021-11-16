@@ -41,6 +41,7 @@ export function ProfileBadge(props){
     
     return  user ? 
         <>
+        <ContentDiv icon='ion-ios-person' title='Your Profile' />
         <h1><i className="ion-ios-person"></i> {user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)} {user.last_name.charAt(0).toUpperCase() + user.last_name.slice(1)}</h1>
         <h1><i className="ion-ios-mail"></i> {user.email} <i className="ion-ios-call"></i> {user.number}</h1>
         <h1><i className="ion-ios-home"></i> {user.address1} <i className="ion-ios-home"></i> {user.address2}</h1>

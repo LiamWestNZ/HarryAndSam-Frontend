@@ -15,6 +15,7 @@ export function PetList(){
     const [pets, setPets] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState('')
+
     
 
     const getPets = async () => {
@@ -30,29 +31,37 @@ export function PetList(){
       }
       setIsLoading(false)
     }
+
+    const handleDeletePetInFeed = (id) =>{
+      let newPets = pets.filter((item)=> item.id !== id)
+      setPets(newPets)
+    }
   
     useEffect(() => {
       getPets()
+      
     }, [])
 
     return (
       
 
         <>
+          <ContentDiv icon='ion-ios-paw' title='Your Pets'/>
           
-          { error && error }
-    { isLoading ? <div>Loading...</div> : <DisplayPets pets={pets} /> }
-      </>  
+            { error && error }
+            { isLoading ? <div>Loading...</div> : <DisplayPets pets={pets} removePet={handleDeletePetInFeed} /> }
+        </>  
         
     )
 }
 
 
 export function DisplayPets(props) {
+  const {removePet} = props
   
   
   const displayPets = props.pets.map(pet =>(
-    <PetBadge key={pet.id} {...pet}/>
+    <PetBadge key={pet.id} {...pet} removePet={removePet} />
   ))
   return (
     <div>

@@ -102,6 +102,8 @@ export function PetUpdateForm(props){
     const [form] = Form.useForm();
 
     return (
+        <>
+        <ContentDiv icon='ion-ios-paw' title={`Update this pets profile`} />
             <Form
             form={form}
             name="petupdate"
@@ -199,6 +201,7 @@ export function PetUpdateForm(props){
             
 
             </Form>
+            </>
     )
 }
 

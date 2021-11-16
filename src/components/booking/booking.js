@@ -1,5 +1,7 @@
 import React from 'react'
 
+import ContentDiv from '../layout/title'
+
 
 export function Booking(){
 
@@ -8,7 +10,8 @@ export function Booking(){
     return (
 
         <div>
-
+            <ContentDiv icon="ion-ios-calendar" title="Booking"/>
+            Hello
         </div>
     )
 }

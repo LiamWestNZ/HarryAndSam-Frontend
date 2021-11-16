@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children } from 'react';
 
 import styled from 'styled-components';
 import './content.scss'
@@ -19,17 +19,19 @@ const TitleDiv = styled.div`
     height:40px;
     width: 100%;
     text-decoration-color: #FFFF ;
-    border-radius: 5px;
+    border-radius: 15px 15px 0px 0px;
 `;
 
 
 
 export function ContentDiv(props){
+    const {children} = props
 
     return (
-        <React.Fragment>
-            <TitleDiv><Title>{props.icon} {props.title}</Title></TitleDiv>
-        </React.Fragment>
+        <div>
+            <TitleDiv><Title><i className={props.icon}></i> {props.title} {children}</Title></TitleDiv>
+            
+            </div>
         
     )
 }

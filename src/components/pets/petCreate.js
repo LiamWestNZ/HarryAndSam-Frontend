@@ -16,6 +16,7 @@ import axios from 'axios';
 
 
 import './pets.scss'
+import ContentDiv from '../layout/title';
 
 
 
@@ -82,6 +83,8 @@ export function PetCreateForm(){
     const [form] = Form.useForm();
 
     return (
+        <>
+        <ContentDiv icon='ion-ios-paw' title='Create a pet profile' />
             <Form
             form={form}
             name="petcreate"
@@ -138,7 +141,7 @@ export function PetCreateForm(){
             </Form.Item>
 
             <Form.Item name="birthday" label="Pet Birth Date" style={{float: 'left'}}>
-                <DatePicker />
+                <DatePicker format="DD/MM/YYYY" />
             </Form.Item>
 
             <Form.Item name="son" label="Sprayed / Neutered" valuePropName="true" style={{ float: 'left', marginTop: 0, marginLeft: 10}}>
@@ -179,6 +182,7 @@ export function PetCreateForm(){
             
 
             </Form>
+            </>
     )
 }
 

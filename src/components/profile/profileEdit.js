@@ -72,7 +72,7 @@ export function ProfileUpdateForm (props){
         );
       }
 
-  useEffect( () =>{
+  useEffect(() =>{
     fetch(`http://localhost:8000/api/profile/${username}`)
           .then(results=>{
             return results.json()
@@ -88,9 +88,7 @@ export function ProfileUpdateForm (props){
                 city: data.city,
                 postal: data.postal
             })
-            .catch((error)=>{
-              console.log(errorMessage, error)
-            })
+            
 
 
           })
@@ -132,6 +130,8 @@ export function ProfileUpdateForm (props){
   );
 
   return (
+    <>
+    <ContentDiv icon='ion-ios-person' title='Update your profile' />
         <Form
         {...formItemLayout}
         form={form}
@@ -293,9 +293,12 @@ export function ProfileUpdateForm (props){
             <br></br>
         </Form.Item>
         </Form>
+        </>
 
   );
+  
 }
+
 
 
 
